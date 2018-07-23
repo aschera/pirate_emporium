@@ -1,0 +1,43 @@
+<!-- MENU Setup
+
+Main Menu.
+
+(link.links)
+level 0:        Home        Shop
+
+(childlink)               
+level 1:                    Mens            Womens              Jewelry
+
+(sublink)                                                                                                 
+level 2:                    Mens jeans      Womens dresses      Watches
+                            Mens shirts     Womens shirts       Necklaces
+-->         
+
+
+            <!-- linklist = object
+            in section we have a schema with "id": "main_linklist"
+            -->
+            {% for link in linklists[section.settings.main_linklist].links%}
+
+                <!-- if the list of links has dropdowns: ned menu items are created -->
+                {% if link.links != blank %}
+
+                    <!-- these are the categories: mens, womens, etc. -->
+                    {% for childlink in link.links %}
+                         
+                            <ul id="product-menu__subproducts">
+                                <!-- links for every category: display link and name -->
+                                {% for sublink in childlink.links %}
+                                <li>
+                                    <a href="{{sublink.url}}">{{sublink.title}}</a>
+                                    <i class="fa fa-caret-right"></i>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                                 
+                                
+                    {% endfor %}
+                {% endif%}
+            {% endfor%}
+            
+   

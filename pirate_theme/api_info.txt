@@ -1,0 +1,11 @@
+API key
+34aab9d85cb4b609234c41f14b7662e8
+
+password
+98e23a7a519d9004f4124a8cece60262
+
+shared secret
+02dff384348cbdf009688b239caf4b18
+
+example url:
+https://34aab9d85cb4b609234c41f14b7662e8:98e23a7a519d9004f4124a8cece60262@pirate-emporium.myshopify.com/admin/orders.json

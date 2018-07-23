@@ -1,0 +1,98 @@
+<section class="top-header">
+<header class="header">
+  <div class="content">
+
+    <div class="overlay"></div>
+
+<!-- Heading -->
+
+            <a href="/" class="desktop logo">
+                <h1>Pirate Emporium </h1>
+            </a>
+
+<!-- Main navigation -->
+            <nav class="desktop">
+                <ul>
+
+                  <!-- dynmaic menu for Shopify pages -->
+                   <li>{% include 'menu' %}</li> 
+
+
+                  <!-- cart -->
+                  <li class="list-inline-item">
+                        <a class="nav-link" href="/cart">
+                          <i class="fa fa-shopping-cart">
+                          </i>
+                          <span class="menu-item-text">
+                          Cart
+                          </span>
+                       </a>
+                    </li>
+                    
+                    <!-- login/logout/signup -->
+
+                      <!-- show login link if certain conditions are met =  -->
+                        {% if shop.customer_accounts_enabled %}
+                      <!-- the shop is open for business -->
+                        {% if customer %}
+                      <!-- there is a customer who is logged in -->
+                        <li class="list-inline-item">
+                                <a class="nav-link"  href="/account">
+                                    <i class="fa fa-user">
+                                    </i>
+                                    <span class="menu-item-text">Your Account</span>
+                                  </a>
+                        </li>
+                        <li class="list-inline-item">
+                                <a class="nav-link"  href="/account">
+                                    <i class="fa fa-sign-out">
+                                    </i>
+                                    <span class="menu-item-text">Signout</span>
+                                  </a>
+                        </li>
+                      {% else %}
+                      <!-- there is NO customer who is logged in -->
+                        <li class="list-inline-item">
+                                <a class="nav-link"  href="/account/login">
+                                    <i class="fa fa-sign-in"></i>
+                                    <span class="menu-item-text">Login</span>
+                                  </a>
+                        </li>
+                      {% endif %} 
+                      {% endif %}
+
+                </ul>
+            </nav>
+
+            <!-- Mobile navigation -->
+            <nav class="mobile">
+              <!-- dynmaic menu for Shopify pages -->
+              {% include 'mobile_menu' %}
+            </nav>
+        </div>
+
+
+        <div class="center desktop">
+          <!-- dynmaic menu for Shopify pages -->
+          <ul id="product-menu">{% include 'menu.products' %}</ul>
+        </div>
+      </header>
+</section>
+
+<!-- custom settings for the menu: 
+this adds it to shopify UI so it can be changed on the website 
++ dynamic content -->
+{% schema %} 
+{ 
+  "name": "Main Menu", 
+  "settings": 
+  [
+   { 
+     "type": "link_list", 
+     "id": "main_linklist", 
+     "label": "Menu", 
+     "default": "main-menu" 
+    } 
+   ] 
+   }
+    {% endschema %}

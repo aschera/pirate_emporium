@@ -1,0 +1,37 @@
+<ul>        
+{% for link in linklists[section.settings.main_linklist].links%}
+
+    <!-- if the list of links has no dropdowns: regular menu item created -->
+    {% if link.links == blank %}
+                    <li class="nav-item active list-inline-item">
+                        <a class="nav-link" href="{{link.url}}">
+                        
+                          {% if link.title == 'Contact' %}
+                            <i class="fa fa-envelope">
+                            </i>
+                          {% endif %}
+
+                          {% if link.title == 'About us' %}
+                            <i class="fa fa-info">
+                            </i>
+                          {% endif %}
+
+                            <span class="sr-only menu-item-text">
+                                (current)
+                            </span>
+
+                            <span class="menu-item-text">
+                                {{link.title}} 
+                            </span>
+                            
+                        </a>
+                    </li>    
+    {% endif%}
+{% endfor%}
+
+    <div class="mobile">
+        <!-- dynmaic menu for Shopify pages -->
+        {% include 'menu.products' %}
+    </div> 
+    
+</ul>

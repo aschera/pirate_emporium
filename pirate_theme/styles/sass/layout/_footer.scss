@@ -1,0 +1,18 @@
+
+.footer{
+    margin-top:5rem;
+    border-top:1px solid $color-dark;
+
+    &__text{
+        padding: 0 1rem; 
+        color: $color-dark;
+        text-transform: uppercase; 
+    }
+
+    &__date { 
+        color: $color-dark;
+        font-family: 'Open Sans', sans-serif; 
+        font-size: 1.6rem; 
+    }
+}
+

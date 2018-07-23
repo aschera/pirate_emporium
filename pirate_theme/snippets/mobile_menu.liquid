@@ -1,0 +1,151 @@
+<div class="mobile-menu-container">
+    <ul id="mobile-menu">
+
+    <li>
+    
+    <a href="/" class="mobile logo">
+        <h3>Pirate Emporium </h3>
+    </a>
+
+    <div class="close-menu">
+        <a class="nav-link" href="/" alt="close button">
+            <i class="fa fa-times-circle">
+            </i>
+        </a>
+    </div>
+    </li>
+
+
+<!-- ******************************************************************************************** -->
+
+<!-- login/logout/signup -->
+    <!-- show login link if certain conditions are met =  -->
+    {% if shop.customer_accounts_enabled %}
+    <!-- the shop is open for business -->
+
+    {% if customer %}
+    <!-- there is a customer who is logged in -->
+
+        <li class="nav-item active list-inline-item rowLeft">
+
+        <div>
+            <a class="nav-link"  href="/">
+                <i class="fa fa-home"></i>
+                <span class="menu-item-text">Home</span>
+            </a>
+        </div>
+
+        <div>
+            <a class="nav-link"  href="/account">
+                <i class="fa fa-user">
+                </i>
+                <span class="menu-item-text">Your Account</span>
+            </a>
+        </div>
+
+        <div>
+            <a class="nav-link" href="/cart">
+                <i class="fa fa-shopping-bag">
+                </i>
+                <span class="menu-item-text">
+                    &nbsp;( {{ cart.item_count }} )
+                </span>
+            </a>
+        </div>
+
+        </li>
+
+    {% else %}
+    <!-- there is NO customer who is logged in -->
+
+        <li class="nav-item active list-inline-item rowLeft">
+
+        <div>
+            <a class="nav-link"  href="/">
+                <i class="fa fa-home"></i>
+                <span class="menu-item-text">Home</span>
+            </a>
+        </div>
+        <div>
+            <a class="nav-link"  href="/account/login">
+                <i class="fa fa-sign-in"></i>
+                <span class="menu-item-text">Login</span>
+            </a>
+        </div>
+
+        <div>
+            <a class="nav-link" href="/cart">
+                <i class="fa fa-shopping-bag">
+                </i>
+                <span class="menu-item-text">
+                    &nbsp;( {{ cart.item_count }} )
+                </span>
+            </a>
+        </div>
+
+        </li>
+
+    {% endif %} 
+    {% endif %}
+
+
+<!-- ******************************************************************************************** -->
+    <li>
+        <!-- the products -->
+        {% include 'menu.products' %}
+    </li> 
+
+
+<!-- ******************************************************************************************** -->
+
+    <li class="nav-item active list-inline-item rowLeft">
+
+    {% for link in linklists[section.settings.main_linklist].links%}
+    {% if link.links == blank %}
+
+    <div>
+        <a class="nav-link" href="{{link.url}}">      
+            {% if link.title == 'Contact' %}
+                <i class="fa fa-envelope"> <span class="menu-item-text">{{link.title}}</span>
+                </i>
+            {% endif %}
+            <span class="sr-only menu-item-text">
+                (current)
+            </span>
+        </a>
+    </div>
+
+    <div>
+        <a class="nav-link" href="{{link.url}}">              
+            {% if link.title == 'About us' %}
+                <i class="fa fa-info"> <span class="menu-item-text">{{link.title}}</span>
+                </i>
+            {% endif %}
+            <span class="sr-only menu-item-text">
+                (current)
+            </span>
+        </a>
+    </div>
+
+
+    {% endif%}
+    {% endfor%}
+
+
+
+    </li>  
+<!-- ******************************************************************************************** -->
+
+<li>
+    <div>
+        <a class="nav-link"  href="/account">
+            <i class="fa fa-sign-out"></i>
+            <span class="menu-item-text">Signout</span>
+        </a>
+    </div>
+</li>
+</ul> <!-- end mobile menu -->
+
+</ul>
+</div>
+   
